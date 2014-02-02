@@ -27,20 +27,13 @@ test:
     identity_map_enabled: true
     use_utc: true
 
-# set these environment variables on your prod server
-
 production:
-  uri: <%= ENV['MONGOHQ_URL'] %>
+  sessions:
+    default:
+      database: <%= ENV['MONGOID_DATABASE'] %>
+      hosts:
+        - '<%=ENV["MONGOID_HOST"]%>:<%=ENV["MONGOID_PORT"]%>'
+      username: <%= ENV['MONGOID_USERNAME'] %>
+      password: <%= ENV['MONGOID_PASSWORD'] %>
   options:
     identity_map_enabled: true
-
-# production:
-#   sessions:
-#     default:
-#       database: <%= ENV['MONGOID_DATABASE'] %>
-#       hosts:
-#         - '<%=ENV["MONGOID_HOST"]%>:<%=ENV["MONGOID_PORT"]%>'
-#       username: <%= ENV['MONGOID_USERNAME'] %>
-#       password: <%= ENV['MONGOID_PASSWORD'] %>
-#   options:
-#     identity_map_enabled: true
